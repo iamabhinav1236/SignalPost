@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signalpost-intelligence"
+version = "1.0.0"
+description = "Evidence-first Norwegian company research agent"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Signalpost Intelligence"}]
+dependencies = ["requests>=2.31,<3.0"]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110,<1.0", "uvicorn>=0.27,<1.0"]
+test = ["pytest>=8,<9", "responses>=0.25,<1.0"]
+
+[project.scripts]
+signalpost = "signalpost.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["signalpost*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
